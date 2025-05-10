@@ -12,7 +12,12 @@ router.post("/", async (req, res) => {
       // Traer todos los salones desde la BD
       const salones = await Salon.find({}, { _id: 0, __v: 0 });
       const contexto = `Esta es la información actual de los salones:\n${salones.map(s => {
-        return `Salón: ${s["Salón"]}, Capacidad: ${s.CAPACIDAD}, Edificio: ${s.EDIFICIO}, Piso: ${s.PISO}`;
+        return `Salón: ${s["Salón"]}, Capacidad: ${s.CAPACIDAD}, Edificio: ${s.EDIFICIO}, Piso: ${s.PISO},
+         Tomacorriente: ${s.Tomacorriente}, Movilidad: ${s.Movilidad}, Entorno: ${s.Entorno},
+          Equipamiento Tecnológico: ${s["Equipamiento Tecnológico "]}, Tipo de Aula: ${s["Tipo de Aula"]},
+           Tipo de mesa: ${s["Tipo de mesa"]}, Tipo de silla: ${s["Tipo de silla"]},
+            Tipo de tablero: ${s["Tipo de tablero"]}, Comentarios: ${s.COMENTARIOS}`;
+            
       }).join("\n")}`;
   
       const response = await axios.post(
