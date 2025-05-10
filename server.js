@@ -17,6 +17,13 @@ app.use("/api/salones", salonesRoutes);
 const chatRoute = require("./routes/chat");
 app.use("/api/chat", chatRoute);
 
+// Ruta para probar el servidor
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'API de ChatGPT funcionando correctamente',
+    status: 'OpenAI configurado con clave fija en el controlador'
+  });
+});
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGO_URI, {
